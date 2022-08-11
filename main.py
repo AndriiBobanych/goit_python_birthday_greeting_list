@@ -40,35 +40,6 @@ def generate_users(n=500):
 users_birthdays: List[Dict[str, datetime.date]] = generate_users()
 
 
-# users_birthdays: List[Dict[str, datetime.date]] = [
-#     {
-#         "user 1": datetime(year=2022, month=8, day=14).date(),
-#         "user 2": generate_date(),
-#         "user 3": generate_date(),
-#     },
-#     {
-#         "user 4": generate_date(),
-#         "user 5": generate_date(),
-#         "user 6": generate_date(),
-#     },
-#     {
-#         "user 7": generate_date(),
-#         "user 8": generate_date(),
-#         "user 9": generate_date(),
-#     },
-#     {
-#         "user 10": generate_date(),
-#         "user 11": generate_date(),
-#         "user 12": generate_date(),
-#     },
-#     {
-#         "user 13": generate_date(),
-#         "user 14": generate_date(),
-#         "user 15": generate_date(),
-#     },
-# ]
-
-
 def get_weekday_by_id(weekday_id: int):
 
     weekday_map: Dict[int, str] = {
@@ -111,12 +82,13 @@ def get_birthdays_per_week(users: List[Dict[str, datetime.date]]):
             if weekday in ["Saturday", "Sunday"]:
                 weekday = "Monday"
 
-            greeting_scheduler[weekday].append({username: current_year_birthday})
+            greeting_scheduler[weekday].append({username: birthday})
 
-        # print("\n")
-        # for weekday, birthday_guy in greeting_scheduler.items():
-        #     print(f"{weekday}: " + " ".join(birthday_guy))
-        pprint(greeting_scheduler)
+        print(f"Today is: {start_greeting}")
+        print("We have the following nearest birthdays:")
+        print("\n")
+        for weekday, birthday_guy in greeting_scheduler.items():
+            print(f"{weekday}: {birthday_guy}")
         return greeting_scheduler
 
 
